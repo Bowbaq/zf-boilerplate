@@ -4,9 +4,9 @@ Vagrant::Config.run do |config|
     "--memory", "1024",
     "--cpus", "2"
   ]
-  config.vm.box = "lucid32"
+  config.vm.box = "precise64"
   config.vm.forward_port 80, 8080
-  config.vm.forward_port 3306, 3306
+  config.vm.forward_port 3306, 8081
   config.ssh.max_tries = 50
   config.ssh.timeout   = 300
   config.vm.provision :chef_solo do |chef|
