@@ -2,11 +2,23 @@ require_recipe "apt"
 require_recipe "build-essential"
 require_recipe "networking_basic"
 require_recipe "apache2"
+include_recipe "apache2::mod_php5"
+include_recipe "apache2::mod_rewrite"
+include_recipe "apache2::mod_deflate"
 require_recipe "mysql::server"
-require_recipe "php::php5"
+require_recipe "php"
+require_recipe "php::module_mysql"
+require_recipe "php::module_apc"
+require_recipe "php::module_memcache"
+require_recipe "php::module_curl"
 require_recipe "elasticsearch"
 require_recipe "ant"
 require_recipe "memcached"
+
+# Install mysql gem
+gem_package "mysql" do
+  action :install
+end
 
 ruby_block "Create database + execute grants" do
   block do
