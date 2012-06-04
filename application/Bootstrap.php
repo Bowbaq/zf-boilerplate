@@ -1,5 +1,9 @@
 <?php
 
+use \Symfony\Component\DependencyInjection\ContainerBuilder;
+use \Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use \Symfony\Component\Config\FileLocator;
+
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
     public function _initConfig()
@@ -12,10 +16,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         require_once APPLICATION_PATH .
             '/../library/Doctrine/Common/ClassLoader.php';
 
-        require_once APPLICATION_PATH .
-            '/../library/Symfony/Component/Di/sfServiceContainerAutoloader.php';
+        //require_once APPLICATION_PATH . '/../library/Symfony/Component/Di/sfServiceContainerAutoloader.php';
 
-        sfServiceContainerAutoloader::register();
+        //sfServiceContainerAutoloader::register();
         $autoloader = \Zend_Loader_Autoloader::getInstance();
 
         $fmmAutoloader = new \Doctrine\Common\ClassLoader('Bisna');
@@ -46,9 +49,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     public function _initServices()
     {
-        $sc = new sfServiceContainerBuilder();
-        $loader = new sfServiceContainerLoaderFileXml($sc);
-        $loader->load(APPLICATION_PATH . "/configs/services.xml");
+        $sc = new ContainerBuilder();
+        $loader = new XmlFileLoader($sc, new FileLocator(APPLICATION_PATH . '/configs'));
+        $loader->load('services.xml');
+
+		$sc->setParameter('application_path', APPLICATION_PATH);
         Zend_Registry::set('sc', $sc);
     }
 

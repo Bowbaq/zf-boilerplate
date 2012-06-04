@@ -1,0 +1,3 @@
+[2012-06-04 11:46:17] app.ERROR: This is a test [] []
+[2012-06-04 11:53:45] app.ERROR: This is a test [] []
+[2012-06-04 11:53:45] app.INFO: This is some information with metadata : {"some_key":"some_value","time":1338810825} []

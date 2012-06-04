@@ -19,6 +19,14 @@ class Site_IndexController extends Zend_Controller_Action
      */
     protected $_randomQuote = null;
 
+	/**
+	 * The monolog handler
+	 *
+	 * @var Monolog\Logger
+	 * @InjectService logger
+	 */
+	protected $logger;
+
     public function init()
     {
         $this->_em = Zend_Registry::get('em');
@@ -113,7 +121,16 @@ class Site_IndexController extends Zend_Controller_Action
     }
         
     public function indexAction()
-    {
+    {   
+		$this->logger->err('This is a test');
+		$this->logger->info(
+			'This is some information with metadata :',
+			array(
+				'some_key' => 'some_value',
+				'time' => time(),
+			)
+		);
+	
         $addQuoteForm = new \App\Form\AddQuote();
         $this->view->form = $addQuoteForm;
         $this->checkSearchindex();
