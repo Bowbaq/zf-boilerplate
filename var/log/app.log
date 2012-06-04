@@ -3,3 +3,7 @@
 [2012-06-04 11:53:45] app.INFO: This is some information with metadata : {"some_key":"some_value","time":1338810825} []
 [2012-06-04 12:01:06] app.ERROR: This is a test [] []
 [2012-06-04 12:01:06] app.INFO: This is some information with metadata : {"some_key":"some_value","time":1338811266} []
+[2012-06-04 13:34:11] app.ERROR: This is a test [] []
+[2012-06-04 13:34:11] app.INFO: This is some information with metadata : {"some_key":"some_value","time":1338816851} []
+[2012-06-04 13:34:19] app.ERROR: This is a test [] []
+[2012-06-04 13:34:19] app.INFO: This is some information with metadata : {"some_key":"some_value","time":1338816859} []
