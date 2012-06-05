@@ -2,7 +2,7 @@ Vagrant::Config.run do |config|
   config.vm.customize [
     "modifyvm", :id,
     "--memory", "1024",
-    "--cpus", "2"
+    "--cpus", "1"
   ]
   config.vm.box = "precise32"
   config.vm.network :hostonly, "1.2.3.4"
