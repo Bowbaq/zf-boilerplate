@@ -1,20 +1,24 @@
 <?php
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
- * @Entity(repositoryClass="App\Repository\Quote")
- * @Table(name="quote")
+ * @ORM\Entity(repositoryClass="App\Repository\Quote")
+ * @ORM\Table(name="quote")
  */
 class Quote
 {
     /**
-     * @Id @Column(type="integer", name="id")
-     * @GeneratedValue
+     * @ORM\Id @ORM\Column(type="integer", name="id")
+     * @ORM\GeneratedValue
      */
     private $_id;
-    /** @Column(type="string", name="wording") */
+
+    /** @ORM\Column(type="string", name="wording") */
     private $_wording;
-    /** @Column(type="string", name="author") */
+    /** @ORM\Column(type="string", name="author") */
     private $_author;
 
     public function getId()
@@ -48,7 +52,4 @@ class Quote
     {
         return $this->getWording();
     }
-
-
-
 }

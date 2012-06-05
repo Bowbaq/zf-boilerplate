@@ -1,0 +1,13 @@
+<?php
+if(count($this->service_types) > 0) {
+    echo '<h1> Types de services : </h1>';
+    echo '<ul>';
+    foreach($this->service_types as $type) {
+        echo '<li><a href="/admin/service-type/show/id/' . $type->getId() . '">' . $type->getName() . '</a></li>'; 
+    }
+    echo '</ul>';
+} else {
+    echo "<p> Aucun type de service à afficher </p>";
+}
+?>
+<a href="/admin/service-type/add">Ajouter un nouveau type de service</a>

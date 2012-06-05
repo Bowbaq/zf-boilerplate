@@ -1,0 +1,17 @@
+<?php
+if(isset($this->error)) {
+    echo 'Erreur : ' . $this->error . '<br/>';
+}
+?>
+<h1><?php echo $this->service_type->getName(); ?></h1>
+<h2> Attributs</h2>
+<ul>
+    <?php
+    foreach($this->service_type->getAttributes() as $a) {
+        echo '<li>' . $a->getLabel() . '(' . $a->getName() . ') is of type ' . $a->getType() 
+            .' <a href="/admin/service-type/remove-attribute/id/' . $this->service_type->getId() . '/attribute_id/' . $a->getId() . '">Supprimer</a></li>';
+    }
+    ?>
+</ul>
+<h2> Ajouter un attribut</h2>
+<?php echo $this->add_attribute_form; ?>

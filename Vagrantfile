@@ -4,7 +4,9 @@ Vagrant::Config.run do |config|
     "--memory", "1024",
     "--cpus", "2"
   ]
-  config.vm.box = "precise64"
+  config.vm.box = "precise32"
+  config.vm.network :hostonly, "1.2.3.4"
+  config.vm.share_folder("v-root", "/var/www/yujia", ".", :nfs => true)
   config.vm.forward_port 80, 8080
   config.vm.forward_port 3306, 8081
   config.ssh.max_tries = 50
